@@ -9,7 +9,7 @@ const getNumbersFromString = (string) => (
 	string.replace( /^\D+/g, '')
 );
 
-const OrderListItem = ({classes, order}) => (
+const OrderListItem = ({order}) => (
 	<div>
 		<ListItem>
 			<Avatar>

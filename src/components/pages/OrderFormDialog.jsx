@@ -5,29 +5,23 @@ import PageTitle from '../commons/PageTitle.jsx';
 import Page from '../commons/Page.jsx';
 import FullscreenDialog from '../commons/FullscreenDialog.jsx';
 
-class OrderFormDialog extends React.Component {
-
-	render() {
-		const {orderToUpdate, onClose, open} = this.props;
-		return (
-			<FullscreenDialog
-				open={open}
-				onClose={onClose}
-			>
-				<Page>
-					<PageTitle>
-						{ orderToUpdate ?
-							'Editar pedido'
-							:
-							'Criar pedido'
-						}
-					</PageTitle>
-					<OrderForm orderToUpdate={orderToUpdate}/>
-				</Page>
-			</FullscreenDialog>
-		);
-	}
-}
+const OrderFormDialog = ({orderToUpdate, onClose, open}) => (
+	<FullscreenDialog
+		open={open}
+		onClose={onClose}
+	>
+		<Page>
+			<PageTitle>
+				{ orderToUpdate ?
+					'Editar pedido'
+					:
+					'Criar pedido'
+				}
+			</PageTitle>
+			<OrderForm orderToUpdate={orderToUpdate}/>
+		</Page>
+	</FullscreenDialog>
+);
 
 OrderFormDialog.propTypes = {
 	orderToUpdate: PropTypes.object,

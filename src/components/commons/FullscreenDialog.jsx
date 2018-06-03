@@ -8,14 +8,18 @@ const Transition = (props) => (
 	<Slide direction="up" {...props} />
 );
 
-const FullscreenDialog = ({open, onClose, children}) => (
+const FullscreenDialog = ({open, onClose, children, hideCloseButton}) => (
 	<Dialog
 		fullScreen
 		open={open}
 		onClose={onClose}
 		TransitionComponent={Transition}
 	>
-		<CloseDialogButton onClose={onClose}/>
+		{ hideCloseButton ?
+			null
+			:
+			<CloseDialogButton onClose={onClose}/>
+		}
 		{children}
 	</Dialog>
 )
@@ -23,7 +27,8 @@ const FullscreenDialog = ({open, onClose, children}) => (
 FullscreenDialog.propTypes = {
 	open: PropTypes.bool.isRequired,
 	onClose: PropTypes.func.isRequired,
-	children: PropTypes.node.isRequired
+	children: PropTypes.node.isRequired,
+	hideCloseButton: PropTypes.bool
 };
 
 export default FullscreenDialog;
