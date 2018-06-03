@@ -1,8 +1,8 @@
 import React from 'react';
-import Orders from '../orders/Orders.jsx';
+import OrderForm from '../orders/OrderForm.jsx';
 
 export default () => (
 	<div>
-		<Orders />
+		<OrderForm />
 	</div>
 );
