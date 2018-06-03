@@ -16,7 +16,7 @@ test('check if product card renders all product info', () => {
 	expect(productCard.contains(mockedProduct.name)).toEqual(true);
 	expect(productCard.contains(mockedProduct.category)).toEqual(true);
 	expect(productCard.contains(mockedProduct.description)).toEqual(true);
-	expect(productCard.contains(mockedProduct.price)).toEqual(true);
+	expect(productCard.contains(mockedProduct.price.toFixed(2))).toEqual(true);
 	expect(
 		productCard.find('.MuiCardMedia-root-31')
 		.prop('style')
