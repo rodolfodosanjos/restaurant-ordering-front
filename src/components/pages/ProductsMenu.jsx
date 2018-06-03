@@ -1,8 +1,8 @@
 import React from 'react';
-import ProductsList from '../productsMenu/ProductsList.jsx';
+import Products from '../productsMenu/Products.jsx';
 
 export default () => (
 	<div>
-		<ProductsList/>
+		<Products/>
 	</div>
 );

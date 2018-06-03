@@ -6,14 +6,14 @@ class ProductList extends Component {
 	state = {
 			products: [{
 			_id: 123,
-			imageSrc: 'https://cdn.pixabay.com/photo/2017/08/12/18/59/snack-2635035_640.jpg',
+			imageSrc: 'https://portal.minervafoods.com/files/styles/blog_full_page/public/como_fazer_hamburguer_caseiro.jpg?itok=CyGvXnuY',
 			name: 'Hamburguer com batata frita',
 			category: 'hamburguer',
 			description: 'Hamburguer com queijo, carne e batata frita',
 			price: 40
 		}, {
 			_id: 321,
-			imageSrc: 'https://cdn.pixabay.com/photo/2015/03/05/18/30/spaghetti-660748_640.jpg',
+			imageSrc: 'http://d2gtpjxvvd720b.cloudfront.net/system/newsletter_item/social_image/182/default_hungry-girl-healthy-spaghetti-squash-shrimp-scampi.jpg',
 			name: 'Macarrão com camarão',
 			category: 'massas',
 			description: 'Espaguete com camarão',
