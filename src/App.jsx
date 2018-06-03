@@ -1,5 +1,5 @@
 import React from 'react';
-import Orders from './components/pages/Orders.jsx';
+import ProductsMenu from './components/pages/ProductsMenu.jsx';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import blue from '@material-ui/core/colors/blue';
 
@@ -11,7 +11,7 @@ const theme = createMuiTheme({
 
 const App = () => (
   <MuiThemeProvider theme={theme}>
-    <Orders />
+    <ProductsMenu />
   </MuiThemeProvider>
 );
 

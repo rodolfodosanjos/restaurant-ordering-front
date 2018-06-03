@@ -37,7 +37,7 @@ const ProductCard = ({classes, product}) => (
 			</Typography>
 			<Chip label={product.category} />
 			<Typography variant="headline">
-				R$ {product.price.toFixed(2)}
+				<small>R$</small> {product.price.toFixed(2)}
 			</Typography>
 		</CardContent>
 	</Card>
