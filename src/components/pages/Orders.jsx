@@ -1,11 +1,8 @@
 import React from 'react';
-import OrderFormDialog from './OrderFormDialog.jsx';
+import OrderDialogOpenButton from '../orders/OrderDialogOpenButton.jsx';
 
 export default () => (
 	<div>
-		<OrderFormDialog 
-			orderToUpdate={{}}
-			onClose={() => {}}
-			open={true}/>
+		<OrderDialogOpenButton />
 	</div>
 );

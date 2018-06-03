@@ -4,7 +4,7 @@ import Slide from '@material-ui/core/Slide';
 import Dialog from '@material-ui/core/Dialog';
 import CloseDialogButton from './CloseDialogButton.jsx';
 
-const Transition = props => (
+const Transition = (props) => (
 	<Slide direction="up" {...props} />
 );
 
@@ -13,7 +13,7 @@ const FullscreenDialog = ({open, onClose, children}) => (
 		fullScreen
 		open={open}
 		onClose={onClose}
-		transition={Transition}
+		TransitionComponent={Transition}
 	>
 		<CloseDialogButton onClose={onClose}/>
 		{children}
