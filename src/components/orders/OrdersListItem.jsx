@@ -8,7 +8,7 @@ const getNumbersFromString = (string) => (
 	string.replace( /^\D+/g, '')
 );
 
-const OrderListItem = ({classes, order}) => (
+const OrdersListItem = ({classes, order}) => (
 	<ListItem>
 		<Avatar>
 			{getNumbersFromString(order.table)}
@@ -17,8 +17,8 @@ const OrderListItem = ({classes, order}) => (
 	</ListItem>
 );
 
-OrderListItem.propTypes = {
+OrdersListItem.propTypes = {
 	order: PropTypes.object.isRequired  
 };
 
-export default OrderListItem;
+export default OrdersListItem;

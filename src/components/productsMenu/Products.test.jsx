@@ -1,27 +1,27 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import Products from './Products.jsx';
-import ProductCard from './ProductCard.jsx';
+import ProductsCardGrid from './ProductsCardGrid.jsx';
+import ProductsList from './ProductsList.jsx';
 
 const mockProducts = () => ([{
 	_id: 123,
-	imageSrc: 'https://cdn.pixabay.com/photo/2017/08/12/18/59/snack-2635035_640.jpg',
 	name: 'Hamburguer com batata frita',
-	category: 'hamburguer',
-	description: 'Hamburguer com queijo, carne e batata frita',
-	price: 40
 }, {
 	_id: 321,
-	imageSrc: 'https://cdn.pixabay.com/photo/2015/03/05/18/30/spaghetti-660748_640.jpg',
 	name: 'Macarrão com camarão',
-	category: 'massas',
-	description: 'Espaguete com camarão',
-	price: 45.4
 }]);
 
-test.skip('check if all products were rendered', () => {
+test('should render products card grid', () => {
 	const mockedProducts = mockProducts();
-	const products = shallow(<Products />);
-	expect(products).toContainReact(<ProductCard product={mockedProducts[0]}/>);
-	expect(products).toContainReact(<ProductCard product={mockedProducts[1]}/>);
+	const products = shallow(<Products showProductsAsCards={true} />);
+	expect(products.find(ProductsCardGrid)).toHaveLength(1);
+	expect(products.find(ProductsList)).toHaveLength(0);
+});
+
+test('should render products list', () => {
+	const mockedProducts = mockProducts();
+	const products = shallow(<Products showProductsAsCards={false} />);
+	expect(products.find(ProductsList)).toHaveLength(1);
+	expect(products.find(ProductsCardGrid)).toHaveLength(0);
 });

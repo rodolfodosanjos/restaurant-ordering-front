@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Grid from '@material-ui/core/Grid';
-import ProductCard from './ProductCard.jsx';
+import ProductsCardGrid from './ProductsCardGrid.jsx';
+import ProductsList from './ProductsList.jsx';
 
-class ProductList extends Component {
+class Products extends Component {
 	state = {
 			products: [{
 			_id: 123,
@@ -22,16 +22,18 @@ class ProductList extends Component {
 	}
 
   render() {
+  	const {showProductsAsCards} = this.props;
+  	const {products} = this.state;
 	return (
-		<Grid container spacing={24}>
-			{this.state.products.map(product => (
-				<Grid item key={product._id}>
-					<ProductCard product={product} />
-				</Grid>
-			))}
-		</Grid>
+		<div>
+			{showProductsAsCards ?
+				<ProductsCardGrid products={products} />
+				:
+				<ProductsList products={products} />
+			}
+		</div>
 	);
   }
 }
 
-export default ProductList;
+export default Products;

@@ -1,9 +1,9 @@
 import React from 'react';
-import OrderListItem from '../orders/OrderListItem.jsx';
+import OrdersListItem from '../orders/OrdersListItem.jsx';
 
 export default () => (
 	<div>
-		<OrderListItem order={{
+		<OrdersListItem order={{
 			table: 'Mesa 25',
 			notes: 'Sem pepino'
 		}}/>
