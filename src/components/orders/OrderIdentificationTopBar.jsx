@@ -20,7 +20,7 @@ const OrderIdentificationTopBar = ({order, onClose}) => (
 					<Typography
 						align="center"
 						variant="headline"
-						color="inherit">
+						color="primary">
 						{order.table}
 					</Typography>
 				</Grid>
