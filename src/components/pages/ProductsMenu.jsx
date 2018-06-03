@@ -1,5 +1,5 @@
 import React from 'react';
-import Products from '../productsMenu/Products.jsx';
+import Products from '../products/Products.jsx';
 
 export default () => (
 	<div>
