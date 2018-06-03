@@ -1,5 +1,4 @@
 import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
@@ -31,19 +30,19 @@ class OrderForm extends React.Component {
 							id="table"
 							label="Mesa"
 							inputProps={{ autoFocus: true }}
-							value={this.state.table}
+							defaultValue={this.state.table}
 							onChange={this.handleInputChange('table')}
 							margin="normal"
+							required
 						/>
 					</Grid>
 					<Grid item>
 						<TextField
 							id="notes"
 							label="Observações"
-							value={this.state.notes}
+							defaultValue={this.state.notes}
 							onChange={this.handleInputChange('notes')}
 							margin="normal"
-							required
 						/>
 					</Grid>
 					<Grid item>
