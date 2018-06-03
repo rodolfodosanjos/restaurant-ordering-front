@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import List from '@material-ui/core/List';
 import OrderListItem from './OrderListItem.jsx';
-import ListContainerMaxSize from '../commons/ListContainerMaxSize.jsx';
+import ListContainerMaxSize from '../../commons/ListContainerMaxSize.jsx';
 
 const OrdersList = ({orders}) => (
 	<ListContainerMaxSize>

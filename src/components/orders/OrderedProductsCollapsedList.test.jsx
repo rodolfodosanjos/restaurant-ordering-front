@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import OrderedProductsCollapsedList from './OrderedProductsCollapsedList.jsx';
-import ProductsList from '../products/ProductsList.jsx';
+import ProductsList from '../products/presentational/ProductsList.jsx';
 import ListItem from '@material-ui/core/ListItem';
 
 const mockProducts = () => ([{

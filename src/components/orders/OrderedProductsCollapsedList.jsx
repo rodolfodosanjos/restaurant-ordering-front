@@ -6,7 +6,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
-import ProductsList from '../products/ProductsList.jsx';
+import ProductsList from '../products/presentational/ProductsList.jsx';
 
 class OrderedProductsCollapsedList extends React.Component {
 	state = { open: false };

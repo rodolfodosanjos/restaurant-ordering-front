@@ -1,5 +1,5 @@
 import React from 'react';
-import ProductsComponent from '../products/Products.jsx';
+import ProductsComponent from '../products/container/Products.jsx';
 import PageTitle from '../commons/PageTitle.jsx';
 import Page from '../commons/Page.jsx';
 

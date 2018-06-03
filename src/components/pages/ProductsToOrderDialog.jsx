@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Products from './Products.jsx';
-import OrderIdentificationTopBar from '../orders/OrderIdentificationTopBar.jsx';
+import OrderIdentificationTopBar from '../orders/presentationals/OrderIdentificationTopBar.jsx';
 import FullscreenDialog from '../commons/FullscreenDialog.jsx';
 
 const ProductsToOrderDialog = ({onClose, open, order}) => (

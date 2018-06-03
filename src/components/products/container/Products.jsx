@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import ProductsCardGrid from './ProductsCardGrid.jsx';
-import ProductsList from './ProductsList.jsx';
+import ProductsCardGrid from '../presentational/ProductsCardGrid.jsx';
+import ProductsList from '../presentational/ProductsList.jsx';
 
 class Products extends Component {
 	state = {

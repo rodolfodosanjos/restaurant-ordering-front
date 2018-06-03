@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import Products from './Products.jsx';
-import ProductsCardGrid from './ProductsCardGrid.jsx';
-import ProductsList from './ProductsList.jsx';
+import ProductsCardGrid from '../presentational/ProductsCardGrid.jsx';
+import ProductsList from '../presentational/ProductsList.jsx';
 
 const mockProducts = () => ([{
 	_id: 123,

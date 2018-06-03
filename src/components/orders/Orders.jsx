@@ -1,5 +1,5 @@
 import React from 'react';
-import OrdersList from '../orders/OrdersList.jsx';
+import OrdersList from '../orders/presentational/OrdersList.jsx';
 
 export default () => (
 	<div>

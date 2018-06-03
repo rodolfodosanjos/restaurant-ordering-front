@@ -9,9 +9,7 @@ const Orders = () => (
 		<PageTitle>
 			Pedidos
 		</PageTitle>
-		<div>
-			<OrdersComponent />
-		</div>
+		<OrdersComponent />
 		<OrderDialogOpenButton />
 	</Page>
 );
