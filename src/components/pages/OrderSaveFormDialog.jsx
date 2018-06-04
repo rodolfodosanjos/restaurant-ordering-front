@@ -5,7 +5,7 @@ import PageTitle from '../commons/PageTitle.jsx';
 import Page from '../commons/Page.jsx';
 import FullscreenDialog from '../commons/FullscreenDialog.jsx';
 
-const OrderSaveFormDialog = ({orderToUpdate, onClose, open}) => (
+const OrderSaveFormDialog = ({saveOrder, orderToUpdate, onClose, open}) => (
 	<FullscreenDialog
 		open={open}
 		onClose={onClose}
@@ -18,7 +18,9 @@ const OrderSaveFormDialog = ({orderToUpdate, onClose, open}) => (
 					'Criar pedido'
 				}
 			</PageTitle>
-			<OrderSaveForm orderToUpdate={orderToUpdate}/>
+			<OrderSaveForm
+				saveOrder={saveOrder}
+				orderToUpdate={orderToUpdate}/>
 		</Page>
 	</FullscreenDialog>
 );

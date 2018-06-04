@@ -4,15 +4,19 @@ import List from '@material-ui/core/List';
 import OrderListItem from './OrderListItem.jsx';
 import ListContainerMaxSize from '../../commons/ListContainerMaxSize.jsx';
 
-const OrdersList = ({orders}) => (
+const OrdersList = ({orders, isFetching}) => (
 	<ListContainerMaxSize>
-		<List>
-			{orders.map(order => (
-				<div key={order._id}>
-					<OrderListItem order={order} />
-				</div>
-			))}
-		</List>
+		{ isFetching ?
+			null
+			:
+			<List>
+				{orders.map(order => (
+					<div key={order._id}>
+						<OrderListItem order={order} />
+					</div>
+				))}
+			</List>
+		}
 	</ListContainerMaxSize>
 );
 

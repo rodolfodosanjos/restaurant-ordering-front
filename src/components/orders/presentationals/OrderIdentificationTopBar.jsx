@@ -27,7 +27,7 @@ const OrderIdentificationTopBar = ({order, onClose}) => (
 				<Grid item xs={3}>
 					<Button
 						color="inherit"
-						onClose={onClose}>
+						onClick={onClose}>
 						Sair do pedido
 					</Button>
 				</Grid>

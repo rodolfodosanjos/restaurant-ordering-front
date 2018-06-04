@@ -28,8 +28,8 @@ const isProductsToOrderDialogOpen = (state = false, action) => {
 }
 
 const orderDialog = combineReducers({
-  isOrderSaveDialogOpen,
-  isProductsToOrderDialogOpen
+	isOrderSaveDialogOpen,
+	isProductsToOrderDialogOpen
 });
 
 export default orderDialog;

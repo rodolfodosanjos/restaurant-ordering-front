@@ -14,6 +14,13 @@ class OrderSaveForm extends React.Component {
 
 	async saveOrder(event) {
 		event.preventDefault();
+		const {table, notes, _id} = this.state;
+
+		this.props.saveOrder({
+			_id,
+			table,
+			notes
+		});
 	}
 
 	render() {

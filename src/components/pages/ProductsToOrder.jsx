@@ -2,8 +2,8 @@ import { connect } from 'react-redux'
 import { closeProductsToOrderDialog } from '../../actions/dialogs'
 import ProductsToOrderDialog from './ProductsToOrderDialog'
 
-const mapStateToProps = ({isProductsToOrderDialogOpen}) => ({
-	isProductsToOrderDialogOpen,
+const mapStateToProps = ({dialogs}) => ({
+	isProductsToOrderDialogOpen: dialogs.isProductsToOrderDialogOpen,
 	order: {
 		_id: 123,
 		table: 'Mesa 25',
