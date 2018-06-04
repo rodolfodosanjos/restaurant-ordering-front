@@ -1,10 +1,14 @@
-import React, { Component } from 'react';
-import ProductsCardGrid from '../presentationals/ProductsCardGrid.jsx';
-import ProductsList from '../presentationals/ProductsList.jsx';
+import { connect } from 'react-redux'
+import { closeProductsToOrderDialog } from '../../actions/dialogs'
+import ProductsToOrderDialog from './ProductsToOrderDialog'
 
-class Products extends Component {
-	state = {
-			products: [{
+const mapStateToProps = ({isProductsToOrderDialogOpen}) => ({
+	isProductsToOrderDialogOpen,
+	order: {
+		_id: 123,
+		table: 'Mesa 25',
+		notes: 'Sem pepino',
+		products: [{
 			_id: 123,
 			imageSrc: 'https://portal.minervafoods.com/files/styles/blog_full_page/public/como_fazer_hamburguer_caseiro.jpg?itok=CyGvXnuY',
 			name: 'Hamburguer com batata frita',
@@ -20,20 +24,17 @@ class Products extends Component {
 			price: 45.4
 		}]
 	}
+});
 
-  render() {
-  	const {showProductsAsCards} = this.props;
-  	const {products} = this.state;
-	return (
-		<div>
-			{showProductsAsCards ?
-				<ProductsCardGrid products={products} />
-				:
-				<ProductsList products={products} />
-			}
-		</div>
-	);
-  }
-}
+const mapDispatchToProps = dispatch => ({
+	handleClose: () => {
+		dispatch(closeProductsToOrderDialog())
+	}
+});
 
-export default Products;
+const ProductsToOrder = connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(ProductsToOrderDialog);
+
+export default ProductsToOrder;

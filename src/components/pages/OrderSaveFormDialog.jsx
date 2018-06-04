@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import OrderForm from '../orders/OrderForm.jsx';
+import OrderSaveForm from '../orders/OrderSaveForm.jsx';
 import PageTitle from '../commons/PageTitle.jsx';
 import Page from '../commons/Page.jsx';
 import FullscreenDialog from '../commons/FullscreenDialog.jsx';
 
-const OrderFormDialog = ({orderToUpdate, onClose, open}) => (
+const OrderSaveFormDialog = ({orderToUpdate, onClose, open}) => (
 	<FullscreenDialog
 		open={open}
 		onClose={onClose}
@@ -18,15 +18,15 @@ const OrderFormDialog = ({orderToUpdate, onClose, open}) => (
 					'Criar pedido'
 				}
 			</PageTitle>
-			<OrderForm orderToUpdate={orderToUpdate}/>
+			<OrderSaveForm orderToUpdate={orderToUpdate}/>
 		</Page>
 	</FullscreenDialog>
 );
 
-OrderFormDialog.propTypes = {
+OrderSaveFormDialog.propTypes = {
 	orderToUpdate: PropTypes.object,
 	open: PropTypes.bool.isRequired,
 	onClose: PropTypes.func.isRequired
 };
 
-export default OrderFormDialog;
+export default OrderSaveFormDialog;

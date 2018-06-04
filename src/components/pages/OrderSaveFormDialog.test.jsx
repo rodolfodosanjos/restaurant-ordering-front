@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import OrderFormDialog from './OrderFormDialog.jsx';
+import OrderFormDialog from './OrderSaveFormDialog.jsx';
 
 const mockOrder = () => ({
 	table: 'Mesa 50',

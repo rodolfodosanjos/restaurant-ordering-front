@@ -1,5 +1,6 @@
 import React from 'react';
-import OrderDialogOpenButton from '../orders/OrderDialogOpenButton.jsx';
+import OrderSaveDialog from '../orders/container/OrderSaveDialog.jsx';
+import ProductsToOrder from './ProductsToOrder.jsx';
 import OrdersComponent from '../orders/Orders.jsx';
 import PageTitle from '../commons/PageTitle.jsx';
 import Page from '../commons/Page.jsx';
@@ -10,7 +11,8 @@ const Orders = () => (
 			Pedidos
 		</PageTitle>
 		<OrdersComponent />
-		<OrderDialogOpenButton />
+		<OrderSaveDialog />
+		<ProductsToOrder />
 	</Page>
 );
 

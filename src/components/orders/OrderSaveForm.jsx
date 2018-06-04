@@ -3,7 +3,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 
-class OrderForm extends React.Component {
+class OrderSaveForm extends React.Component {
 	state = this.props.orderToUpdate || {}; 
 
 	handleInputChange = name => event => {
@@ -58,4 +58,4 @@ class OrderForm extends React.Component {
 	}
 }
 
-export default OrderForm;
+export default OrderSaveForm;
