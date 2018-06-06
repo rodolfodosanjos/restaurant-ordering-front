@@ -1,28 +1,33 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import OrderSaveForm from '../orders/presentationals/OrderSaveForm.jsx';
-import PageTitle from '../commons/PageTitle.jsx';
-import Page from '../commons/Page.jsx';
+import { connect } from 'react-redux';
+import { closeOrderSaveDialog, openProductsToOrderDialog } from '../../actions/dialogs';
+import { createOrderRequest, updateOrderRequest, fetchOrders, unselectOrderToEdit } from '../../actions/orders';
+import { selectOrderToAddProducts } from '../../actions/products';
+import OrderSavePresentational from './OrderSavePresentational';
 
-const OrderSave = ({createOrder, orderToEdit, updateOrder}) => (
-	<Page>
-		<PageTitle>
-			{Boolean(orderToEdit) ?
-				'Editar pedido'
-				: 'Criar pedido'
-			}
-		</PageTitle>
-		<OrderSaveForm
-			createOrder={createOrder}
-			updateOrder={updateOrder}
-			orderToEdit={orderToEdit}/>
-	</Page>
-);
+const mapStateToProps = ({orders}) => ({
+	orderToEdit: orders.orderToEdit
+});
 
-OrderSave.propTypes = {
-	orderToEdit: PropTypes.object,
-	createOrder: PropTypes.func.isRequired,
-	updateOrder: PropTypes.func.isRequired
-};
+const mapDispatchToProps = dispatch => ({
+	createOrder: order => dispatch(createOrderRequest(order))
+		.then(newOrder => {
+			dispatch(fetchOrders());
+			dispatch(closeOrderSaveDialog());
+			dispatch(selectOrderToAddProducts(newOrder));
+			dispatch(openProductsToOrderDialog());
+		}),
+	updateOrder: order => dispatch(updateOrderRequest(order))
+		.then(() => {
+			dispatch(fetchOrders());
+			dispatch(closeOrderSaveDialog());
+			dispatch(unselectOrderToEdit());
+		})
+
+});
+
+const OrderSave = connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(OrderSavePresentational);
 
 export default OrderSave;

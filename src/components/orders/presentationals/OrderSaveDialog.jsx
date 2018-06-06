@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import FullscreenDialog from '../commons/FullscreenDialog.jsx';
-import OrderSave from '../orders/container/OrderSave.jsx';
+import FullscreenDialog from '../../commons/FullscreenDialog.jsx';
+import OrderSave from '../../pages/OrderSave.jsx';
 
-const OrderSaveDialog = ({onClose, open}) => (
+const OrderSaveDialog = ({onClose, isOpen}) => (
 	<FullscreenDialog
-		open={open}
+		open={isOpen}
 		onClose={onClose}
 	>
 		<OrderSave />
@@ -13,7 +13,7 @@ const OrderSaveDialog = ({onClose, open}) => (
 );
 
 OrderSaveDialog.propTypes = {
-	open: PropTypes.bool.isRequired,
+	isOpen: PropTypes.bool.isRequired,
 	onClose: PropTypes.func.isRequired
 };
 

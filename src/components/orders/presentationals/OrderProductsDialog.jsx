@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Products from './Products.jsx';
-import OrderIdentificationTopBar from '../orders/presentationals/OrderIdentificationTopBar.jsx';
-import FullscreenDialog from '../commons/FullscreenDialog.jsx';
+import Products from '../../pages/Products.jsx';
+import OrderIdentificationTopBar from './OrderIdentificationTopBar.jsx';
+import FullscreenDialog from '../../commons/FullscreenDialog.jsx';
 
 const OrderProductsDialog = ({handleClose, isProductsToOrderDialogOpen, orderToAddProducts}) => (
 	<FullscreenDialog

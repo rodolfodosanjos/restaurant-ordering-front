@@ -1,13 +1,13 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import OrderDialogOpener from './presentationals/OrderDialogOpener.jsx';
+import OrderDialogMainOpener from './presentationals/OrderDialogMainOpener.jsx';
 import OrderSaveDialog from '../pages/OrderSaveDialog.jsx';
 import PageMainButton from '../commons/PageMainButton.jsx';
 
-describe('OrderDialogOpener', () => {
+describe('OrderDialogMainOpener', () => {
 
 	test('should start dialog closed and after click, open it', () => {
-		const wrapper = mount(<OrderDialogOpener />);
+		const wrapper = mount(<OrderDialogMainOpener />);
 
 		expect(wrapper.find(OrderSaveDialog).get(0).props.open).toEqual(false);
 		wrapper.find(PageMainButton).simulate('click');

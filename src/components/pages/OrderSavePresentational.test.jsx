@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import OrderSave from './OrderSave.jsx';
+import OrderSavePresentational from './OrderSavePresentational.jsx';
 
 const mockOrder = () => ({
 	table: 'Mesa 50',
@@ -9,12 +9,12 @@ const mockOrder = () => ({
 
 const voidFunction = () => {};
 
-describe('OrderSave', () => {
+describe('OrderSavePresentational', () => {
 
 	test('should display edit order text', () => {
 		const mockedOrder = mockOrder();
 		const wrapper = mount(
-			<OrderSave
+			<OrderSavePresentational
 				createOrder={voidFunction}
 				updateOrder={voidFunction}
 				orderToEdit={mockedOrder} />);
@@ -24,7 +24,7 @@ describe('OrderSave', () => {
 
 	test('should display create order text', () => {
 		const wrapper = mount(
-			<OrderSave
+			<OrderSavePresentational
 				createOrder={voidFunction}
 				updateOrder={voidFunction} />);
 		expect(wrapper.contains('Editar pedido')).toEqual(false);

@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import { closeProductsToOrderDialog } from '../../../actions/dialogs'
 import { unselectOrderToAddProducts } from '../../../actions/products'
-import OrderProductsDialogPresentational from '../../pages/OrderProductsDialog'
+import OrderProductsDialogPresentational from '../presentationals/OrderProductsDialog'
 
 const mapStateToProps = ({dialogs, products}) => ({
 	isProductsToOrderDialogOpen: dialogs.productsToOrderDialog.isOpen,
