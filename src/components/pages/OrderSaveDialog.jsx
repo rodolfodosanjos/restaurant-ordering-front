@@ -4,29 +4,17 @@ import OrderSaveForm from '../orders/presentationals/OrderSaveForm.jsx';
 import PageTitle from '../commons/PageTitle.jsx';
 import Page from '../commons/Page.jsx';
 import FullscreenDialog from '../commons/FullscreenDialog.jsx';
-import { If, Then, Else } from 'react-if';
+import OrderSave from './OrderSave.jsx';
 
 const OrderSaveFormDialog = ({createOrder, orderToEdit, updateOrder, onClose, open}) => (
 	<FullscreenDialog
 		open={open}
 		onClose={onClose}
 	>
-		<Page>
-			<PageTitle>
-				<If condition={ Boolean(orderToEdit) }>
-					<Then>
-						Editar pedido
-					</Then>
-					<Else>
-						Criar pedido
-					</Else>
-				</If>
-			</PageTitle>
-			<OrderSaveForm
-				createOrder={createOrder}
-				updateOrder={updateOrder}
-				orderToEdit={orderToEdit}/>
-		</Page>
+		<OrderSave 
+			createOrder={createOrder}
+			orderToEdit={orderToEdit}
+			updateOrder={updateOrder}/>
 	</FullscreenDialog>
 );
 

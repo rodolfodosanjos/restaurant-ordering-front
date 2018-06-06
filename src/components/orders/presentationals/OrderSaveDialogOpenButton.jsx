@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import AddIcon from '@material-ui/icons/Add';
-import OrderSaveFormDialog from '../../pages/OrderSaveFormDialog.jsx';
+import OrderSaveDialog from '../../pages/OrderSaveDialog.jsx';
 import PageMainButton from '../../commons/PageMainButton.jsx';
 
 const OrderSaveDialogOpenButton = ({createOrder, updateOrder,
@@ -12,7 +12,7 @@ const OrderSaveDialogOpenButton = ({createOrder, updateOrder,
 			onClick={handleClickOpen}>
 			<AddIcon />
 		</PageMainButton>
-		<OrderSaveFormDialog 
+		<OrderSaveDialog 
 			onClose={handleClose}
 			updateOrder={updateOrder}
 			createOrder={createOrder}
