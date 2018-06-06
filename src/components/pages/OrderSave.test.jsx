@@ -15,10 +15,9 @@ describe('OrderSave', () => {
 		const mockedOrder = mockOrder();
 		const wrapper = mount(
 			<OrderSave
-				orderToEdit={voidFunction}
 				createOrder={voidFunction}
 				updateOrder={voidFunction}
-				orderToUpdate={mockedOrder} />);
+				orderToEdit={mockedOrder} />);
 		expect(wrapper.contains('Editar pedido')).toEqual(true);
 		expect(wrapper.contains('Criar pedido')).toEqual(false);
 	});
@@ -26,7 +25,6 @@ describe('OrderSave', () => {
 	test('should display create order text', () => {
 		const wrapper = mount(
 			<OrderSave
-				orderToEdit={voidFunction}
 				createOrder={voidFunction}
 				updateOrder={voidFunction} />);
 		expect(wrapper.contains('Editar pedido')).toEqual(false);

@@ -1,5 +1,5 @@
 import React from 'react';
-import OrderSave from '../orders/container/OrderSave.jsx';
+import OrderSaveDialog from '../orders/container/OrderSaveDialog.jsx';
 import OrderProducts from '../orders/container/OrderProducts.jsx';
 import OrdersDisplay from '../orders/container/OrdersDisplay.jsx';
 import PageTitle from '../commons/PageTitle.jsx';
@@ -11,7 +11,7 @@ const Orders = () => (
 			Pedidos
 		</PageTitle>
 		<OrdersDisplay />
-		<OrderSave />
+		<OrderSaveDialog />
 		<OrderProducts />
 	</Page>
 );

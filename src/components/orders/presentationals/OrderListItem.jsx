@@ -22,14 +22,14 @@ const OrderListItem = ({order, removeOrder, editOrder}) => (
 			</Avatar>
 			<ListItemText primary={order.table} secondary={order.notes} />
 			<ListItemSecondaryAction>
-				<Tooltip title="Remover pedido">
-					<IconButton onClick={removeOrder.bind(undefined, order._id)} aria-label="Remover pedido">
-						<DeleteIcon />
-					</IconButton>
-				</Tooltip>
 				<Tooltip title="Editar pedido">
 					<IconButton onClick={editOrder.bind(undefined, order)} aria-label="Editar pedido">
 						<EditIcon />
+					</IconButton>
+				</Tooltip>
+				<Tooltip title="Remover pedido">
+					<IconButton onClick={removeOrder.bind(undefined, order._id)} aria-label="Remover pedido">
+						<DeleteIcon />
 					</IconButton>
 				</Tooltip>
 			</ListItemSecondaryAction>
