@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { closeOrderSaveDialog, openOrderSaveDialog } from '../../../actions/dialogs';
-import OrderSaveDialogOpenButton from '../presentationals/OrderSaveDialogOpenButton';
+import OrderSaveDialogOpenerPresentational from '../presentationals/OrderSaveDialogOpener';
 
 const mapStateToProps = ({dialogs, orders}) => ({
 	isOrderSaveDialogOpen: dialogs.orderSaveDialog.isOpen,
@@ -18,6 +18,6 @@ const mapDispatchToProps = dispatch => ({
 const OrderSave = connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(OrderSaveDialogOpenButton);
+)(OrderSaveDialogOpenerPresentational);
 
 export default OrderSave;
