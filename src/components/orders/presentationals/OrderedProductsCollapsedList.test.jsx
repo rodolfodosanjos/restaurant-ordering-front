@@ -17,16 +17,26 @@ const mockProducts = () => ([{
 
 describe('OrderedProductsCollapsedList', () => {
 
+	const voidFunction = () => {};
+
 	test('should NOT render products list when it mounts', () => {
 		const mockedProducts = mockProducts();
-		const orderedProductsCollapsedList = mount(<OrderedProductsCollapsedList products={mockedProducts} />);
+		const orderedProductsCollapsedList = mount(
+			<OrderedProductsCollapsedList
+				order={{}}
+				removeProductFromOrder={voidFunction}
+				products={mockedProducts} />);
 		expect(orderedProductsCollapsedList.find(ProductsList)).toHaveLength(0);
 		expect(orderedProductsCollapsedList.find(ExpandMore)).toHaveLength(1);
 	});
 
 	test('should render products list when collapsed', () => {
 		const mockedProducts = mockProducts();
-		const orderedProductsCollapsedList = mount(<OrderedProductsCollapsedList products={mockedProducts} />);
+		const orderedProductsCollapsedList = mount(
+			<OrderedProductsCollapsedList
+				order={{}}
+				removeProductFromOrder={voidFunction}
+				products={mockedProducts} />);
 		orderedProductsCollapsedList.find(ListItem).simulate('click');
 		expect(orderedProductsCollapsedList.find(ProductsList)).toHaveLength(1);
 		expect(orderedProductsCollapsedList.find(ExpandLess)).toHaveLength(1);

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { fetchProducts } from '../../../actions/products';
-import { orderProductRequest, fetchOrders } from '../../../actions/orders';
+import { orderProductRequest, removeProductFromOrderRequest, fetchOrders } from '../../../actions/orders';
 import ProductsDisplayPresentational from '../presentationals/ProductsDisplay';
 
 const mapStateToProps = ({products}) => ({
@@ -16,7 +16,10 @@ const mapDispatchToProps = dispatch => {
 	return {
 		orderProduct: (orderToAddProducts, product) =>
 			dispatch(orderProductRequest(orderToAddProducts, product))
-				.then(() => dispatch(fetchOrders()))
+				.then(() => dispatch(fetchOrders())),
+		removeProductFromOrder: (orderToRemoveProducts, product) => 
+			dispatch(removeProductFromOrderRequest(orderToRemoveProducts, product))
+				.then(() => dispatch(fetchOrders())),
 	};
 };
 

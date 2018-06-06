@@ -4,7 +4,8 @@ import List from '@material-ui/core/List';
 import ProductListItem from './ProductListItem.jsx';
 import ListContainerMaxSize from '../../commons/ListContainerMaxSize.jsx';
 
-const ProductsList = ({products, orderToAddProducts, orderProduct}) => (
+const ProductsList = ({products, orderToAddProducts, orderProduct,
+		removeProductFromOrder, orderToRemoveProducts}) => (
 	<ListContainerMaxSize>
 		<List>
 			{products.map(product => (
@@ -12,7 +13,9 @@ const ProductsList = ({products, orderToAddProducts, orderProduct}) => (
 					<ProductListItem
 						product={product}
 						orderToAddProducts={orderToAddProducts}
-						orderProduct={orderProduct} />
+						orderProduct={orderProduct}
+						orderToRemoveProducts={orderToRemoveProducts}
+						removeProductFromOrder={removeProductFromOrder} />
 				</div>
 			))}
 		</List>

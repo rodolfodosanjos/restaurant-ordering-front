@@ -10,9 +10,17 @@ const mockOrder = () => ({
 
 describe('OrderListItem', () => {
 
+	const voidFunction = () => {};
+
 	test('should render main order info ', () => {
 		const mockedOrder = mockOrder();
-		const orderListItem = mount(<OrderListItem order={mockedOrder} />);
+		const orderListItem = mount(
+			<OrderListItem
+				order={mockedOrder}
+				removeProductFromOrder={voidFunction}
+				orderProducts={voidFunction}
+				editOrder={voidFunction}
+				removeOrder={voidFunction} />);
 		expect(orderListItem.contains(mockedOrder.table)).toEqual(true);
 		expect(orderListItem.contains(mockedOrder.notes)).toEqual(true);
 	});
@@ -23,14 +31,26 @@ describe('OrderListItem', () => {
 		
 		test('should just render table number inside order avatar', () => {
 			const mockedOrder = mockOrder();
-			const orderListItem = render(<OrderListItem order={mockedOrder} />);
+			const orderListItem = render(
+				<OrderListItem
+					order={mockedOrder}
+					removeProductFromOrder={voidFunction}
+					orderProducts={voidFunction}
+					editOrder={voidFunction}
+					removeOrder={voidFunction} />);
 			expect(orderListItem.find(avatarSelector).html()).toEqual('25');
 		});
 
 		test('should render nothing inside avatar when there is no parsable numbers in table', () => {
 			const mockedOrder = mockOrder();
 			mockedOrder.table = 'Mesa vinte cinco';
-			const orderListItem = render(<OrderListItem order={mockedOrder} />);
+			const orderListItem = render(
+				<OrderListItem
+					order={mockedOrder}
+					removeProductFromOrder={voidFunction}
+					orderProducts={voidFunction}
+					editOrder={voidFunction}
+					removeOrder={voidFunction} />);
 			expect(orderListItem.find(avatarSelector).html()).toEqual('');
 		});
 

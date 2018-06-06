@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { closeOrderSaveDialog } from '../../../actions/dialogs';
+import { unselectOrderToEdit } from '../../../actions/orders';
 import OrderSaveDialogPresentational from '../presentationals/OrderSaveDialog';
 
 const mapStateToProps = ({dialogs, orders}) => ({
@@ -7,9 +8,10 @@ const mapStateToProps = ({dialogs, orders}) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-	onClose: () => (
-		dispatch(closeOrderSaveDialog())
-	)
+	onClose: () => {
+		dispatch(closeOrderSaveDialog());
+		dispatch(unselectOrderToEdit());
+	}
 });
 
 const OrderSaveDialog = connect(

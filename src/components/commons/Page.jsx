@@ -4,7 +4,8 @@ import { withStyles } from '@material-ui/core/styles';
 
 const styles = {
 	pageStyle: {
-		textAlign: 'center'
+		textAlign: 'center',
+		marginBottom: 100
 	}
 };
 

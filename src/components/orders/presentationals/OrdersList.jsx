@@ -5,13 +5,15 @@ import OrderListItem from './OrderListItem.jsx';
 import ListContainerMaxSize from '../../commons/ListContainerMaxSize.jsx';
 import CenteredLoading from '../../commons/CenteredLoading.jsx';
 
-const OrdersList = ({orders, isLoading, removeOrder, editOrder}) => (
+const OrdersList = ({orders, isLoading, removeOrder, editOrder, orderProducts, removeProductFromOrder}) => (
 	<ListContainerMaxSize>
 		<CenteredLoading isLoading={isLoading}>
 			<List>
 				{orders.map(order => (
 					<div key={order._id}>
 						<OrderListItem
+							removeProductFromOrder={removeProductFromOrder}
+							orderProducts={orderProducts}
 							removeOrder={removeOrder}
 							editOrder={editOrder}
 							order={order} />
@@ -25,6 +27,8 @@ const OrdersList = ({orders, isLoading, removeOrder, editOrder}) => (
 OrdersList.propTypes = {
 	isLoading: PropTypes.bool.isRequired,
 	removeOrder: PropTypes.func.isRequired,
+	removeProductFromOrder: PropTypes.func.isRequired,
+	orderProducts: PropTypes.func.isRequired,
 	editOrder: PropTypes.func.isRequired,
 	orders: PropTypes.array.isRequired
 };

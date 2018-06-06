@@ -9,6 +9,8 @@ import {
 	UPDATE_ORDER_RECEIVE,	
 	ORDER_PRODUCT_REQUEST,
 	ORDER_PRODUCT_RECEIVE,
+	REMOVE_PRODUCT_FROM_ORDER_REQUEST,
+	REMOVE_PRODUCT_FROM_ORDER_RECEIVE,
 	SELECT_ORDER_TO_EDIT,
 	UNSELECT_ORDER_TO_EDIT
 } from '../actions/orders';
@@ -71,6 +73,17 @@ const orders = (state = ordersInitialState, action) => {
 				isLoading: true
 			};
 		case ORDER_PRODUCT_RECEIVE:
+			return {
+				...state,
+				isLoading: false,
+				lastUpdated: action.receivedAt
+			};
+		case REMOVE_PRODUCT_FROM_ORDER_REQUEST:
+			return {
+				...state,
+				isLoading: true
+			};
+		case REMOVE_PRODUCT_FROM_ORDER_RECEIVE:
 			return {
 				...state,
 				isLoading: false,

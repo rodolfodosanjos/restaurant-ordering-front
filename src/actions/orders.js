@@ -8,10 +8,16 @@ export const UPDATE_ORDER_REQUEST = 'UPDATE_ORDER_REQUEST';
 export const UPDATE_ORDER_RECEIVE = 'UPDATE_ORDER_RECEIVE';
 export const ORDER_PRODUCT_REQUEST = 'ORDER_PRODUCT_REQUEST';
 export const ORDER_PRODUCT_RECEIVE = 'ORDER_PRODUCTRECEIVE';
+export const REMOVE_PRODUCT_FROM_ORDER_REQUEST = 'REMOVE_PRODUCT_FROM_ORDER_REQUEST';
+export const REMOVE_PRODUCT_FROM_ORDER_RECEIVE = 'REMOVE_PRODUCT_FROM_ORDER_RECEIVE';
 export const SELECT_ORDER_TO_EDIT = 'SELECT_ORDER_TO_EDIT';
 export const UNSELECT_ORDER_TO_EDIT = 'UNSELECTEDIT';
 
 const PATH = 'http://localhost:5000/orders';
+const corsHeaders = {
+	'Accept': 'application/json',
+	'Content-Type': 'application/json'
+};
 
 export const requestOrders = () => ({
 	type: ORDERS_REQUEST
@@ -56,6 +62,15 @@ export const orderProduct = () => ({
 
 export const orderProductReceive = () => ({
 	type: ORDER_PRODUCT_RECEIVE,
+	receivedAt: Date.now()
+});
+
+export const removeProductFromOrder = () => ({
+	type: REMOVE_PRODUCT_FROM_ORDER_REQUEST
+});
+
+export const removeProductFromOrderReceive = () => ({
+	type: REMOVE_PRODUCT_FROM_ORDER_RECEIVE,
 	receivedAt: Date.now()
 });
 
@@ -105,10 +120,7 @@ export const createOrderRequest = (order) => (
 				method: "POST",
 				mode: 'cors',
 				body: JSON.stringify(order),
-				headers: {
-				  'Accept': 'application/json',
-				  'Content-Type': 'application/json'
-				}
+				headers: corsHeaders
 			}).then(
 				response => {
 					dispatch(createOrderReceive());
@@ -127,10 +139,7 @@ export const updateOrderRequest = (order) => (
 				method: "PUT",
 				mode: 'cors',
 				body: JSON.stringify(order),
-				headers: {
-				  'Accept': 'application/json',
-				  'Content-Type': 'application/json'
-				}
+				headers: corsHeaders
 			}).then(
 				response => {
 					dispatch(updateOrderReceive());
@@ -148,12 +157,24 @@ export const orderProductRequest = (orderToAddProducts, product) => (
 		return fetch(PATH + '/order/' + orderToAddProducts._id + '/product/' + product._id, {
 				method: "PUT",
 				mode: 'cors',
-				headers: {
-				  'Accept': 'application/json',
-				  'Content-Type': 'application/json'
-				},
+				headers: corsHeaders
 			}).then(
 				response => dispatch(orderProductReceive()),
+				error => console.log('An error occurred.', error)
+			);
+	}
+);
+
+export const removeProductFromOrderRequest = (orderToRemoveProducts, product) => (
+	(dispatch) => {
+		dispatch(removeProductFromOrder());
+
+		return fetch(PATH + '/order/' + orderToRemoveProducts._id + '/product/' + product._id, {
+				method: "DELETE",
+				mode: 'cors',
+				headers: corsHeaders
+			}).then(
+				response => dispatch(removeProductFromOrderReceive()),
 				error => console.log('An error occurred.', error)
 			);
 	}

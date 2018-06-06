@@ -14,16 +14,32 @@ describe('ProductsDisplay', () => {
 		name: 'Macarrão com camarão',
 	}]);
 
+	const voidFunction = () => {};
+
 	test('should render products card grid', () => {
 		const mockedProducts = mockProducts();
-		const wrapper = shallow(<ProductsDisplay showProductsAsCards={true} />);
+		const wrapper = shallow(
+			<ProductsDisplay
+				isLoading={false}
+				orderToAddProducts={{}}
+				products={[]}
+				removeProductFromOrder={voidFunction}
+				orderProduct={voidFunction}
+				showProductsAsCards={true} />);
 		expect(wrapper.find(ProductsCardGrid)).toHaveLength(1);
 		expect(wrapper.find(ProductsList)).toHaveLength(0);
 	});
 
 	test('should render products list', () => {
 		const mockedProducts = mockProducts();
-		const wrapper = shallow(<ProductsDisplay showProductsAsCards={false} />);
+		const wrapper = shallow(
+			<ProductsDisplay
+				isLoading={false}
+				orderToAddProducts={{}}
+				products={[]}
+				removeProductFromOrder={voidFunction}
+				orderProduct={voidFunction}
+				showProductsAsCards={false} />);
 		expect(wrapper.find(ProductsList)).toHaveLength(1);
 		expect(wrapper.find(ProductsCardGrid)).toHaveLength(0);
 	});

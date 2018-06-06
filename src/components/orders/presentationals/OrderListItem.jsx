@@ -6,6 +6,7 @@ import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import Tooltip from '@material-ui/core/Tooltip';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import OrderedProductsCollapsedList from './OrderedProductsCollapsedList.jsx';
@@ -14,7 +15,7 @@ const getNumbersFromString = (string) => (
 	string.replace( /^\D+/g, '')
 );
 
-const OrderListItem = ({order, removeOrder, editOrder}) => (
+const OrderListItem = ({order, removeOrder, editOrder, orderProducts, removeProductFromOrder}) => (
 	<div>
 		<ListItem>
 			<Avatar>
@@ -22,25 +23,43 @@ const OrderListItem = ({order, removeOrder, editOrder}) => (
 			</Avatar>
 			<ListItemText primary={order.table} secondary={order.notes} />
 			<ListItemSecondaryAction>
+				<Tooltip title="Adicionar produtos">
+					<IconButton
+						color="primary"
+						onClick={orderProducts.bind(undefined, order)}
+						aria-label="Adicionar produtos">
+						<ShoppingCartIcon />
+					</IconButton>
+				</Tooltip>
 				<Tooltip title="Editar pedido">
-					<IconButton onClick={editOrder.bind(undefined, order)} aria-label="Editar pedido">
+					<IconButton
+						onClick={editOrder.bind(undefined, order)}
+						aria-label="Editar pedido">
 						<EditIcon />
 					</IconButton>
 				</Tooltip>
 				<Tooltip title="Remover pedido">
-					<IconButton onClick={removeOrder.bind(undefined, order._id)} aria-label="Remover pedido">
+					<IconButton
+						onClick={removeOrder.bind(undefined, order._id)}
+						aria-label="Remover pedido">
 						<DeleteIcon />
 					</IconButton>
 				</Tooltip>
+				
 			</ListItemSecondaryAction>
 		</ListItem>
-		<OrderedProductsCollapsedList products={order.products} />
+		<OrderedProductsCollapsedList
+			removeProductFromOrder={removeProductFromOrder}
+			products={order.products}
+			order={order} />
 	</div>
 );
 
 OrderListItem.propTypes = {
 	order: PropTypes.object.isRequired,
+	removeProductFromOrder: PropTypes.func.isRequired,
 	removeOrder: PropTypes.func.isRequired,
+	orderProducts: PropTypes.func.isRequired,
 	editOrder: PropTypes.func.isRequired
 };
 

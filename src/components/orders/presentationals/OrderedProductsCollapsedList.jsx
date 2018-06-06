@@ -15,7 +15,7 @@ class OrderedProductsCollapsedList extends React.Component {
 	};
 
 	render() {
-		const { products } = this.props;
+		const { products, order, removeProductFromOrder } = this.props;
 
 		return (
 			<div>
@@ -24,7 +24,10 @@ class OrderedProductsCollapsedList extends React.Component {
 					{this.state.open ? <ExpandLess /> : <ExpandMore />}
 				</ListItem>
 				<Collapse in={this.state.open} timeout="auto" unmountOnExit>
-					<ProductsList products={products} />
+					<ProductsList
+						products={products}
+						orderToRemoveProducts={order}
+						removeProductFromOrder={removeProductFromOrder}/>
 				</Collapse>
 			</div>
 		);
@@ -32,7 +35,9 @@ class OrderedProductsCollapsedList extends React.Component {
 }
 
 OrderedProductsCollapsedList.propTypes = {
-	products: PropTypes.array.isRequired  
+	order: PropTypes.object.isRequired,
+	removeProductFromOrder: PropTypes.func.isRequired,
+	products: PropTypes.array.isRequired
 };
 
 export default OrderedProductsCollapsedList;

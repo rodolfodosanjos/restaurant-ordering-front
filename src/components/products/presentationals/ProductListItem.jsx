@@ -7,7 +7,9 @@ import Avatar from '@material-ui/core/Avatar';
 import Chip from '@material-ui/core/Chip';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
+import Tooltip from '@material-ui/core/Tooltip';
 
 const styles = {
 	gridContainerFix: {
@@ -15,7 +17,8 @@ const styles = {
 	},
 };
 
-const ProductListItem = ({classes, product, orderToAddProducts, orderProduct}) => (
+const ProductListItem = ({classes, product, orderToAddProducts,
+		orderProduct, removeProductFromOrder, orderToRemoveProducts}) => (
 	<ListItem>
 		<Avatar alt={product.name} src={product.imageSrc} />
 		<ListItemText
@@ -33,23 +36,26 @@ const ProductListItem = ({classes, product, orderToAddProducts, orderProduct}) =
 				</Typography>
 			</Grid>
 			<Grid item>
-				{(orderToAddProducts && orderProduct) ?
-					<Button
-						variant="outlined"
-						color="secondary"
-						onClick={orderProduct.bind(undefined, orderToAddProducts, product)}>
-						Add no Pedido
-					</Button>
-				: null}
 				<Chip label={product.category} />
 			</Grid>
 		</Grid>
+		{(orderToRemoveProducts && removeProductFromOrder) ?
+			<Tooltip title="Remover produto">
+				<IconButton
+					color="secondary"
+					onClick={removeProductFromOrder.bind(undefined, orderToRemoveProducts, product)}
+					aria-label="Remover produto">
+					<RemoveCircleOutlineIcon />
+				</IconButton>
+			</Tooltip>
+		: null}
 	</ListItem>
 );
 
 ProductListItem.propTypes = {
 	classes: PropTypes.object.isRequired,
 	orderProduct: PropTypes.func,
+	removeProductFromOrder: PropTypes.func,
 	product: PropTypes.object.isRequired
 };
 
