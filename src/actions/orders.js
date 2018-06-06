@@ -4,8 +4,12 @@ export const REMOVE_ORDER_REQUEST = 'REMOVE_ORDER_REQUEST';
 export const REMOVE_ORDER_RECEIVE = 'REMOVE_ORDER_RECEIVE';
 export const CREATE_ORDER_REQUEST = 'CREATE_ORDER_REQUEST';
 export const CREATE_ORDER_RECEIVE = 'CREATE_ORDER_RECEIVE';
+export const UPDATE_ORDER_REQUEST = 'UPDATE_ORDER_REQUEST';
+export const UPDATE_ORDER_RECEIVE = 'UPDATE_ORDER_RECEIVE';
 export const ORDER_PRODUCT_REQUEST = 'ORDER_PRODUCT_REQUEST';
 export const ORDER_PRODUCT_RECEIVE = 'ORDER_PRODUCTRECEIVE';
+export const SELECT_ORDER_TO_EDIT = 'SELECT_ORDER_TO_EDIT';
+export const UNSELECT_ORDER_TO_EDIT = 'UNSELECTEDIT';
 
 const PATH = 'http://localhost:5000/orders';
 
@@ -37,6 +41,15 @@ export const createOrderReceive = () => ({
 	receivedAt: Date.now()
 });
 
+export const updateOrder = () => ({
+	type: UPDATE_ORDER_REQUEST
+});
+
+export const updateOrderReceive = () => ({
+	type: UPDATE_ORDER_RECEIVE,
+	receivedAt: Date.now()
+});
+
 export const orderProduct = () => ({
 	type: ORDER_PRODUCT_REQUEST
 });
@@ -44,6 +57,15 @@ export const orderProduct = () => ({
 export const orderProductReceive = () => ({
 	type: ORDER_PRODUCT_RECEIVE,
 	receivedAt: Date.now()
+});
+
+export const selectOrderToEdit = (orderToEdit) => ({
+	type: SELECT_ORDER_TO_EDIT,
+	orderToEdit
+});
+
+export const unselectOrderToEdit = () => ({
+	type: UNSELECT_ORDER_TO_EDIT
 });
 
 export const fetchOrders = () => (
@@ -90,6 +112,28 @@ export const createOrderRequest = (order) => (
 			}).then(
 				response => {
 					dispatch(createOrderReceive());
+					return response.json();
+				},
+				error => console.log('An error occurred.', error)
+			);
+	}
+);
+
+export const updateOrderRequest = (order) => (
+	(dispatch) => {
+		dispatch(updateOrder());
+
+		return fetch(PATH + '/' + order._id, {
+				method: "PUT",
+				mode: 'cors',
+				body: JSON.stringify(order),
+				headers: {
+				  'Accept': 'application/json',
+				  'Content-Type': 'application/json'
+				}
+			}).then(
+				response => {
+					dispatch(updateOrderReceive());
 					return response.json();
 				},
 				error => console.log('An error occurred.', error)

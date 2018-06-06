@@ -1,5 +1,6 @@
-import { connect } from 'react-redux'
-import { fetchOrders, deleteOrderRequest } from '../../../actions/orders'
+import { connect } from 'react-redux';
+import { fetchOrders, deleteOrderRequest, selectOrderToEdit } from '../../../actions/orders';
+import { openOrderSaveDialog } from '../../../actions/dialogs';
 import OrdersList from '../presentationals/OrdersList.jsx';
 
 const mapStateToProps = ({orders}) => ({
@@ -12,7 +13,11 @@ const mapDispatchToProps = dispatch => {
 	
 	return {
 		removeOrder: _id => dispatch(deleteOrderRequest(_id))
-								.then(() => dispatch(fetchOrders()))
+								.then(() => dispatch(fetchOrders())),
+		editOrder: order => {
+			dispatch(selectOrderToEdit(order));
+			dispatch(openOrderSaveDialog());
+		}
 	};
 };
 

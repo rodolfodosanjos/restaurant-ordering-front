@@ -1,19 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import OrderSaveForm from '../orders/container/OrderSaveForm.jsx';
+import OrderSaveForm from '../orders/presentationals/OrderSaveForm.jsx';
 import PageTitle from '../commons/PageTitle.jsx';
 import Page from '../commons/Page.jsx';
 import FullscreenDialog from '../commons/FullscreenDialog.jsx';
 import { If, Then, Else } from 'react-if';
 
-const OrderSaveFormDialog = ({createOrder, orderToUpdate, onClose, open}) => (
+const OrderSaveFormDialog = ({createOrder, orderToEdit, updateOrder, onClose, open}) => (
 	<FullscreenDialog
 		open={open}
 		onClose={onClose}
 	>
 		<Page>
 			<PageTitle>
-				<If condition={ Boolean(orderToUpdate) }>
+				<If condition={ Boolean(orderToEdit) }>
 					<Then>
 						Editar pedido
 					</Then>
@@ -24,16 +24,18 @@ const OrderSaveFormDialog = ({createOrder, orderToUpdate, onClose, open}) => (
 			</PageTitle>
 			<OrderSaveForm
 				createOrder={createOrder}
-				orderToUpdate={orderToUpdate}/>
+				updateOrder={updateOrder}
+				orderToEdit={orderToEdit}/>
 		</Page>
 	</FullscreenDialog>
 );
 
 OrderSaveFormDialog.propTypes = {
-	orderToUpdate: PropTypes.object,
+	orderToEdit: PropTypes.object,
 	open: PropTypes.bool.isRequired,
 	onClose: PropTypes.func.isRequired,
-	createOrder: PropTypes.func.isRequired
+	createOrder: PropTypes.func.isRequired,
+	updateOrder: PropTypes.func.isRequired
 };
 
 export default OrderSaveFormDialog;

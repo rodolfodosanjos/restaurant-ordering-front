@@ -4,7 +4,8 @@ import AddIcon from '@material-ui/icons/Add';
 import OrderSaveFormDialog from '../../pages/OrderSaveFormDialog.jsx';
 import PageMainButton from '../../commons/PageMainButton.jsx';
 
-const OrderSaveDialogOpenButton = ({createOrder, isOrderSaveDialogOpen, handleClickOpen, handleClose}) => (
+const OrderSaveDialogOpenButton = ({createOrder, updateOrder,
+	isOrderSaveDialogOpen, handleClickOpen, handleClose, orderToEdit}) => (
 	<div>
 		<PageMainButton
 			title="Criar pedido"
@@ -13,7 +14,9 @@ const OrderSaveDialogOpenButton = ({createOrder, isOrderSaveDialogOpen, handleCl
 		</PageMainButton>
 		<OrderSaveFormDialog 
 			onClose={handleClose}
+			updateOrder={updateOrder}
 			createOrder={createOrder}
+			orderToEdit={orderToEdit}
 			open={isOrderSaveDialogOpen}/>
 	</div>
 );
@@ -21,6 +24,7 @@ const OrderSaveDialogOpenButton = ({createOrder, isOrderSaveDialogOpen, handleCl
 OrderSaveDialogOpenButton.propTypes = {
 	isOrderSaveDialogOpen: PropTypes.bool.isRequired,
 	handleClickOpen: PropTypes.func.isRequired,
+	updateOrder: PropTypes.func.isRequired,
 	createOrder: PropTypes.func.isRequired,
 	handleClose: PropTypes.func.isRequired
 };

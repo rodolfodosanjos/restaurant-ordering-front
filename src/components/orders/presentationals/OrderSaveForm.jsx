@@ -1,10 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 
 class OrderSaveForm extends React.Component {
-	state = this.props.orderToUpdate || {}; 
+	state = this.props.orderToEdit || {}; 
 
 	handleInputChange = name => event => {
 		this.setState({
@@ -12,11 +13,18 @@ class OrderSaveForm extends React.Component {
 		});
 	}
 
-	async saveOrder(event) {
+	saveOrder(event) {
 		event.preventDefault();
-		const {table, notes} = this.state;
+		const {_id, table, notes} = this.state;
+		const {updateOrder, createOrder} = this.props;
 
-		this.props.createOrder({
+		if (_id)
+			return updateOrder({
+				_id,
+				table,
+				notes
+			});
+		createOrder({
 			table,
 			notes
 		});
@@ -63,5 +71,10 @@ class OrderSaveForm extends React.Component {
 		);
 	}
 }
+
+OrderSaveForm.propTypes = {
+	createOrder: PropTypes.func.isRequired,
+	updateOrder: PropTypes.func.isRequired
+};
 
 export default OrderSaveForm;
