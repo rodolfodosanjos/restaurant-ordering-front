@@ -13,7 +13,6 @@ const ProductsList = ({products, orderToAddProducts, orderProduct,
 					<ProductListItem
 						product={product}
 						orderToAddProducts={orderToAddProducts}
-						orderProduct={orderProduct}
 						orderToRemoveProducts={orderToRemoveProducts}
 						removeProductFromOrder={removeProductFromOrder} />
 				</div>
