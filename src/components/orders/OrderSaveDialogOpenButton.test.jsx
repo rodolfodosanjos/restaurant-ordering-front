@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import OrderDialogOpenButton from './OrderDialogOpenButton.jsx';
+import OrderDialogOpenButton from './presentationals/OrderDialogOpenButton.jsx';
 import OrderFormDialog from '../pages/OrderFormDialog.jsx';
 import PageMainButton from '../commons/PageMainButton.jsx';
 

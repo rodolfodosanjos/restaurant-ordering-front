@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import OrderFormDialog from './OrderSaveFormDialog.jsx';
+import OrderSaveFormDialog from './OrderSaveFormDialog.jsx';
 
 const mockOrder = () => ({
 	table: 'Mesa 50',
@@ -9,12 +9,12 @@ const mockOrder = () => ({
 
 const voidFunction = () => {};
 
-describe('OrderForm', () => {
+describe('OrderSaveFormDialog', () => {
 
 	test('should display edit order text', () => {
 		const mockedOrder = mockOrder();
 		const wrapper = mount(
-			<OrderFormDialog
+			<OrderSaveFormDialog
 				onClose={voidFunction}
 				open={true}
 				orderToUpdate={mockedOrder} />);
@@ -23,7 +23,7 @@ describe('OrderForm', () => {
 	});
 
 	test('should display create order text', () => {
-		const wrapper = mount(<OrderFormDialog
+		const wrapper = mount(<OrderSaveFormDialog
 			onClose={voidFunction}
 			open={true}/>);
 		expect(wrapper.contains('Editar pedido')).toEqual(false);

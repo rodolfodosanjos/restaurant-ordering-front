@@ -7,6 +7,7 @@ import Avatar from '@material-ui/core/Avatar';
 import Chip from '@material-ui/core/Chip';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 
 const styles = {
 	gridContainerFix: {
@@ -14,7 +15,7 @@ const styles = {
 	},
 };
 
-const ProductListItem = ({classes, product}) => (
+const ProductListItem = ({classes, product, orderToAddProducts, orderProduct}) => (
 	<ListItem>
 		<Avatar alt={product.name} src={product.imageSrc} />
 		<ListItemText
@@ -32,6 +33,14 @@ const ProductListItem = ({classes, product}) => (
 				</Typography>
 			</Grid>
 			<Grid item>
+				{(orderToAddProducts && orderProduct) ?
+					<Button
+						variant="outlined"
+						color="secondary"
+						onClick={orderProduct.bind(undefined, orderToAddProducts, product)}>
+						Add no Pedido
+					</Button>
+				: null}
 				<Chip label={product.category} />
 			</Grid>
 		</Grid>
@@ -40,6 +49,7 @@ const ProductListItem = ({classes, product}) => (
 
 ProductListItem.propTypes = {
 	classes: PropTypes.object.isRequired,
+	orderProduct: PropTypes.func,
 	product: PropTypes.object.isRequired
 };
 

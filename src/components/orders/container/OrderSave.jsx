@@ -1,22 +1,27 @@
-import { connect } from 'react-redux'
-import { closeOrderSaveDialog, openOrderSaveDialog, openProductsToOrderDialog } from '../../../actions/dialogs'
-import OrderSaveDialogOpenButton from '../OrderSaveDialogOpenButton'
+import { connect } from 'react-redux';
+import { closeOrderSaveDialog, openOrderSaveDialog, openProductsToOrderDialog } from '../../../actions/dialogs';
+import { createOrderRequest, fetchOrders } from '../../../actions/orders';
+import { selectOrderToAddProducts } from '../../../actions/products';
+import OrderSaveDialogOpenButton from '../presentationals/OrderSaveDialogOpenButton';
 
 const mapStateToProps = ({dialogs}) => ({
-	isOrderSaveDialogOpen: dialogs.isOrderSaveDialogOpen 
+	isOrderSaveDialogOpen: dialogs.orderSaveDialog.isOpen
 });
 
 const mapDispatchToProps = dispatch => ({
 	handleClickOpen: () => (
 		dispatch(openOrderSaveDialog())
 	),
-	handleClose: () => {
+	handleClose: () => (
 		dispatch(closeOrderSaveDialog())
-	},
-	saveOrder: (order) => {
-		dispatch(closeOrderSaveDialog())
-		dispatch(openProductsToOrderDialog())
-	}
+	),
+	createOrder: order => dispatch(createOrderRequest(order))
+		.then(newOrder => {
+			dispatch(fetchOrders());
+			dispatch(closeOrderSaveDialog());
+			dispatch(selectOrderToAddProducts(newOrder));
+			dispatch(openProductsToOrderDialog());
+		})
 });
 
 const OrderSave = connect(

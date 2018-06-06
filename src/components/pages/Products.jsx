@@ -1,5 +1,5 @@
 import React from 'react';
-import ProductsComponent from '../products/container/Products.jsx';
+import ProductsDisplay from '../products/container/ProductsDisplay.jsx';
 import PageTitle from '../commons/PageTitle.jsx';
 import Page from '../commons/Page.jsx';
 
@@ -8,7 +8,7 @@ const Products = ({classes}) => (
 		<PageTitle>
 			Produtos
 		</PageTitle>
-		<ProductsComponent />
+		<ProductsDisplay />
 	</Page>
 );
 

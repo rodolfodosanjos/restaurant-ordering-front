@@ -1,8 +1,10 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import OrderedProductsCollapsedList from './OrderedProductsCollapsedList.jsx';
-import ProductsList from '../products/presentationals/ProductsList.jsx';
+import ProductsList from '../../products/presentationals/ProductsList.jsx';
 import ListItem from '@material-ui/core/ListItem';
+import ExpandLess from '@material-ui/icons/ExpandLess';
+import ExpandMore from '@material-ui/icons/ExpandMore';
 
 const mockProducts = () => ([{
 	_id: 123,
@@ -19,6 +21,7 @@ describe('OrderedProductsCollapsedList', () => {
 		const mockedProducts = mockProducts();
 		const orderedProductsCollapsedList = mount(<OrderedProductsCollapsedList products={mockedProducts} />);
 		expect(orderedProductsCollapsedList.find(ProductsList)).toHaveLength(0);
+		expect(orderedProductsCollapsedList.find(ExpandMore)).toHaveLength(1);
 	});
 
 	test('should render products list when collapsed', () => {
@@ -26,6 +29,7 @@ describe('OrderedProductsCollapsedList', () => {
 		const orderedProductsCollapsedList = mount(<OrderedProductsCollapsedList products={mockedProducts} />);
 		orderedProductsCollapsedList.find(ListItem).simulate('click');
 		expect(orderedProductsCollapsedList.find(ProductsList)).toHaveLength(1);
+		expect(orderedProductsCollapsedList.find(ExpandLess)).toHaveLength(1);
 	});
 
 });

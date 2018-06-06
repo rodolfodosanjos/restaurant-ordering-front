@@ -5,9 +5,8 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
 
-const OrderIdentificationTopBar = ({order, onClose}) => (
+const OrderIdentificationTopBar = ({orderToAddProducts, onClose}) => (
 	<AppBar position="static" color="default">
 		<Toolbar>
 			<Grid
@@ -21,7 +20,7 @@ const OrderIdentificationTopBar = ({order, onClose}) => (
 						align="center"
 						variant="headline"
 						color="primary">
-						{order.table}
+						{orderToAddProducts ? orderToAddProducts.table : null}
 					</Typography>
 				</Grid>
 				<Grid item xs={3}>
@@ -37,7 +36,6 @@ const OrderIdentificationTopBar = ({order, onClose}) => (
 );
 
 OrderIdentificationTopBar.propTypes = {
-	order: PropTypes.object.isRequired,
 	onClose: PropTypes.func.isRequired
 };
 

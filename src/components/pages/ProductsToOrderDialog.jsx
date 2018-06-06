@@ -4,13 +4,13 @@ import Products from './Products.jsx';
 import OrderIdentificationTopBar from '../orders/presentationals/OrderIdentificationTopBar.jsx';
 import FullscreenDialog from '../commons/FullscreenDialog.jsx';
 
-const ProductsToOrderDialog = ({handleClose, isProductsToOrderDialogOpen, order}) => (
+const ProductsToOrderDialog = ({handleClose, isProductsToOrderDialogOpen, orderToAddProducts}) => (
 	<FullscreenDialog
 		hideCloseButton={true}
 		open={isProductsToOrderDialogOpen}
 		onClose={handleClose}>
 		<OrderIdentificationTopBar
-			order={order}
+			orderToAddProducts={orderToAddProducts}
 			onClose={handleClose} />
 		<Products />
 	</FullscreenDialog>
@@ -18,7 +18,6 @@ const ProductsToOrderDialog = ({handleClose, isProductsToOrderDialogOpen, order}
 
 ProductsToOrderDialog.propTypes = {
 	isProductsToOrderDialogOpen: PropTypes.bool.isRequired,
-	order: PropTypes.func.isRequired,
 	handleClose: PropTypes.func.isRequired
 };
 

@@ -1,26 +1,27 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import List from '@material-ui/core/List';
 import OrderListItem from './OrderListItem.jsx';
 import ListContainerMaxSize from '../../commons/ListContainerMaxSize.jsx';
+import CenteredLoading from '../../commons/CenteredLoading.jsx';
 
-const OrdersList = ({orders, isFetching}) => (
+const OrdersList = ({orders, isLoading, removeOrder}) => (
 	<ListContainerMaxSize>
-		{ isFetching ?
-			null
-			:
+		<CenteredLoading isLoading={isLoading}>
 			<List>
 				{orders.map(order => (
 					<div key={order._id}>
-						<OrderListItem order={order} />
+						<OrderListItem removeOrder={removeOrder} order={order} />
 					</div>
 				))}
 			</List>
-		}
+		</CenteredLoading>
 	</ListContainerMaxSize>
 );
 
 OrdersList.propTypes = {
+	isLoading: PropTypes.bool.isRequired,
+	removeOrder: PropTypes.func.isRequired,
 	orders: PropTypes.array.isRequired
 };
 

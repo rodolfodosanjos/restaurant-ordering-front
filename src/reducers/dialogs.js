@@ -5,31 +5,47 @@ import {
 	OPEN_PRODUCTS_TO_ORDER_DIALOG,
 	CLOSE_PRODUCTS_TO_ORDER_DIALOG } from '../actions/dialogs.js'
 
-const isOrderSaveDialogOpen = (state = false, action) => {
+const orderSaveDialogInitialState = {
+	isOpen: false
+};
+
+const orderSaveDialog = (state = orderSaveDialogInitialState, action) => {
 	switch (action.type) {
 		case OPEN_ORDER_SAVE_DIALOG:
-			return true;
+			return {
+				isOpen: true
+			};
 		case CLOSE_ORDER_SAVE_DIALOG:
-			return false;
+			return {
+				isOpen: false
+			};
 		default:
-			return state
+			return state;
 	}
-}
+};
 
-const isProductsToOrderDialogOpen = (state = false, action) => {
+const productsToOrderDialogInitialState = {
+	isOpen: false
+};
+
+const productsToOrderDialog = (state = productsToOrderDialogInitialState, action) => {
 	switch (action.type) {
 		case OPEN_PRODUCTS_TO_ORDER_DIALOG:
-			return true;
+			return {
+				isOpen: true
+			};
 		case CLOSE_PRODUCTS_TO_ORDER_DIALOG:
-			return false;
+			return {				
+				isOpen: false
+			}
 		default:
-			return state
+			return state;
 	}
-}
+};
 
-const orderDialog = combineReducers({
-	isOrderSaveDialogOpen,
-	isProductsToOrderDialogOpen
+const dialogs = combineReducers({
+	orderSaveDialog,
+	productsToOrderDialog
 });
 
-export default orderDialog;
+export default dialogs;

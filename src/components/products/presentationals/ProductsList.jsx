@@ -1,15 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import List from '@material-ui/core/List';
 import ProductListItem from './ProductListItem.jsx';
 import ListContainerMaxSize from '../../commons/ListContainerMaxSize.jsx';
 
-const ProductsList = ({products}) => (
+const ProductsList = ({products, orderToAddProducts, orderProduct}) => (
 	<ListContainerMaxSize>
 		<List>
 			{products.map(product => (
 				<div key={product._id}>
-					<ProductListItem product={product} />
+					<ProductListItem
+						product={product}
+						orderToAddProducts={orderToAddProducts}
+						orderProduct={orderProduct} />
 				</div>
 			))}
 		</List>

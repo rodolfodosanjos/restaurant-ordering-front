@@ -17,6 +17,6 @@ const mockOrders = () => ([{
 
 test('check if all orders were rendered', () => {
 	const mockedOrders = mockOrders();
-	const orders = shallow(<OrdersList orders={mockedOrders} />);
+	const orders = shallow(<OrdersList isLoading={false} orders={mockedOrders} />);
 	expect(orders.find(OrderListItem)).toHaveLength(2);
 });

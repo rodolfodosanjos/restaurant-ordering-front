@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
-import OrderSaveFormDialog from '../pages/OrderSaveFormDialog.jsx';
-import PageMainButton from '../commons/PageMainButton.jsx';
+import OrderSaveFormDialog from '../../pages/OrderSaveFormDialog.jsx';
+import PageMainButton from '../../commons/PageMainButton.jsx';
 
-const OrderSaveDialogOpenButton = ({saveOrder, isOrderSaveDialogOpen, handleClickOpen, handleClose}) => (
+const OrderSaveDialogOpenButton = ({createOrder, isOrderSaveDialogOpen, handleClickOpen, handleClose}) => (
 	<div>
 		<PageMainButton
 			title="Criar pedido"
@@ -14,7 +13,7 @@ const OrderSaveDialogOpenButton = ({saveOrder, isOrderSaveDialogOpen, handleClic
 		</PageMainButton>
 		<OrderSaveFormDialog 
 			onClose={handleClose}
-			saveOrder={saveOrder}
+			createOrder={createOrder}
 			open={isOrderSaveDialogOpen}/>
 	</div>
 );
@@ -22,7 +21,7 @@ const OrderSaveDialogOpenButton = ({saveOrder, isOrderSaveDialogOpen, handleClic
 OrderSaveDialogOpenButton.propTypes = {
 	isOrderSaveDialogOpen: PropTypes.bool.isRequired,
 	handleClickOpen: PropTypes.func.isRequired,
-	saveOrder: PropTypes.func.isRequired,
+	createOrder: PropTypes.func.isRequired,
 	handleClose: PropTypes.func.isRequired
 };
 
