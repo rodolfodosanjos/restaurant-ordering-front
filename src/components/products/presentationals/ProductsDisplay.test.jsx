@@ -21,7 +21,7 @@ describe('ProductsDisplay', () => {
 		const wrapper = shallow(
 			<ProductsDisplay
 				isLoading={false}
-				orderToAddProducts={{}}
+				selectedOrder={{}}
 				products={[]}
 				removeProductFromOrder={voidFunction}
 				orderProduct={voidFunction}
@@ -35,7 +35,7 @@ describe('ProductsDisplay', () => {
 		const wrapper = shallow(
 			<ProductsDisplay
 				isLoading={false}
-				orderToAddProducts={{}}
+				selectedOrder={{}}
 				products={[]}
 				removeProductFromOrder={voidFunction}
 				orderProduct={voidFunction}

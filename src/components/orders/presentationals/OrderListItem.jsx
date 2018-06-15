@@ -9,6 +9,7 @@ import EditIcon from '@material-ui/icons/Edit';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import Tooltip from '@material-ui/core/Tooltip';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
+import Typography from '@material-ui/core/Typography';
 import OrderedProductsCollapsedList from './OrderedProductsCollapsedList.jsx';
 
 const getNumbersFromString = (string) => (
@@ -45,13 +46,18 @@ const OrderListItem = ({order, removeOrder, editOrder, orderProducts, removeProd
 						<DeleteIcon />
 					</IconButton>
 				</Tooltip>
-				
 			</ListItemSecondaryAction>
 		</ListItem>
-		<OrderedProductsCollapsedList
-			removeProductFromOrder={removeProductFromOrder}
-			products={order.products}
-			order={order} />
+		{ (order && order.products && order.products.length > 0) ?
+			<OrderedProductsCollapsedList
+				removeProductFromOrder={removeProductFromOrder}
+				products={order.products}
+				order={order} />
+			: <Typography
+				variant="subheading">
+				Nenhum produto pedido
+			</Typography>
+		}
 	</div>
 );
 

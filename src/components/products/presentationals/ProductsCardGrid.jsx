@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import ProductCard from './ProductCard.jsx';
 
-const ProductsCardGrid = ({products, orderToAddProducts, orderProduct}) => (
+const ProductsCardGrid = ({products, selectedOrder, orderProduct}) => (
 	<Grid
 		container
 		direction="row"
@@ -14,7 +14,7 @@ const ProductsCardGrid = ({products, orderToAddProducts, orderProduct}) => (
 			<Grid item key={product._id}>
 				<ProductCard
 					product={product}
-					orderToAddProducts={orderToAddProducts}
+					selectedOrder={selectedOrder}
 					orderProduct={orderProduct} />
 			</Grid>
 		))}

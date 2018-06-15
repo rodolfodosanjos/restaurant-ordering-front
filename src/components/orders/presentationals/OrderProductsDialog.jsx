@@ -5,7 +5,7 @@ import OrderProductTopBar from './OrderProductTopBar.jsx';
 import FullscreenDialog from '../../commons/FullscreenDialog.jsx';
 
 const OrderProductsDialog = ({handleClose, isProductsToOrderDialogOpen,
-		orderToAddProducts, removeProductFromOrder}) => (
+		selectedOrder, removeProductFromOrder}) => (
 	<FullscreenDialog
 		hideCloseButton={true}
 		open={isProductsToOrderDialogOpen}
@@ -15,7 +15,7 @@ const OrderProductsDialog = ({handleClose, isProductsToOrderDialogOpen,
 				<div>
 					<OrderProductTopBar
 						removeProductFromOrder={removeProductFromOrder}
-						orderToAddProducts={orderToAddProducts}
+						selectedOrder={selectedOrder}
 						onClose={handleClose} />
 					<Products />
 				</div>

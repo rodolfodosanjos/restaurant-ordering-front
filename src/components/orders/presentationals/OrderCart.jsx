@@ -6,11 +6,13 @@ import Typography from '@material-ui/core/Typography';
 import Fade from '@material-ui/core/Fade';
 import ProductsList from '../../products/presentationals/ProductsList.jsx';
 
-const OrderCart = ({products, orderToAddProducts,
-		removeProductFromOrder, orderToRemoveProducts,
-		anchorEl, onClose}) => (
+const emptyListTitle = 'Nenhum produto no pedido';
+const emptyListText = 'Clique nos produtos do catálogo para adicioná-los no pedido';
+
+const OrderCart = ({products, selectedOrder,
+		removeProductFromOrder, anchorEl, onClose}) => (
 	<Menu
-		id="lock-menu"
+		id="order-cart-menu"
 		anchorEl={anchorEl}
 		open={Boolean(anchorEl)}
 		TransitionComponent={Fade}
@@ -18,12 +20,13 @@ const OrderCart = ({products, orderToAddProducts,
 		<MenuItem disabled={true}>
 			<Typography
 				variant="display1">
-				{orderToAddProducts.table}
+				{selectedOrder.table}
 			</Typography>
 		</MenuItem>
 		<ProductsList
-			orderToAddProducts={orderToAddProducts}
-			orderToRemoveProducts={orderToRemoveProducts}
+			emptyListTitle={emptyListTitle}
+			emptyListText={emptyListText}
+			selectedOrder={selectedOrder}
 			products={products}
 			removeProductFromOrder={removeProductFromOrder}/>
 	</Menu>

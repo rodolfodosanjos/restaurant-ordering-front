@@ -26,7 +26,7 @@ class OrderedProductsCollapsedList extends React.Component {
 				<Collapse in={this.state.open} timeout="auto" unmountOnExit>
 					<ProductsList
 						products={products}
-						orderToRemoveProducts={order}
+						selectedOrder={order}
 						removeProductFromOrder={removeProductFromOrder}/>
 				</Collapse>
 			</div>

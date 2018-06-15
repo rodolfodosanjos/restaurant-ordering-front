@@ -24,7 +24,7 @@ class OrderProductTopBar extends React.Component {
 	};
 
 	render() {
-		const { orderToAddProducts,
+		const { selectedOrder,
 			onClose, removeProductFromOrder } = this.props;
 		const { anchorEl } = this.state;
 
@@ -42,7 +42,7 @@ class OrderProductTopBar extends React.Component {
 								align="center"
 								variant="headline"
 								color="primary">
-								{orderToAddProducts ? orderToAddProducts.table : null}
+								{selectedOrder ? selectedOrder.table : null}
 							</Typography>
 						</Grid>
 						<Grid item xs={3}>
@@ -56,9 +56,8 @@ class OrderProductTopBar extends React.Component {
 							</Button>
 							<OrderCart
 								anchorEl={anchorEl}
-								orderToAddProducts={orderToAddProducts}
-								orderToRemoveProducts={orderToAddProducts}
-								products={orderToAddProducts.products}
+								selectedOrder={selectedOrder}
+								products={selectedOrder.products}
 								onClose={this.handleClose}
 								removeProductFromOrder={removeProductFromOrder}/>
 							<Button

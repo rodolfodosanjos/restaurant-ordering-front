@@ -1,21 +1,21 @@
 import { connect } from 'react-redux';
 import { closeProductsToOrderDialog } from '../../../actions/dialogs';
-import { unselectOrderToAddProducts } from '../../../actions/products';
+import { unselectOrder } from '../../../actions/orders';
 import { removeProductFromOrderRequest } from '../../../actions/orders';
 import OrderProductsDialogPresentational from '../presentationals/OrderProductsDialog';
 
-const mapStateToProps = ({dialogs, products}) => ({
+const mapStateToProps = ({dialogs, products, orders}) => ({
 	isProductsToOrderDialogOpen: dialogs.productsToOrderDialog.isOpen,
-	orderToAddProducts: products.orderToAddProducts
+	selectedOrder: orders.selectedOrder
 });
 
 const mapDispatchToProps = dispatch => ({
 	handleClose: () => {
 		dispatch(closeProductsToOrderDialog());
-		dispatch(unselectOrderToAddProducts());
+		dispatch(unselectOrder());
 	},
-	removeProductFromOrder: (orderToRemoveProducts, product) => 
-		dispatch(removeProductFromOrderRequest(orderToRemoveProducts, product))
+	removeProductFromOrder: (selectedOrder, product) => 
+		dispatch(removeProductFromOrderRequest(selectedOrder, product))
 });
 
 const OrderProductsDialog = connect(

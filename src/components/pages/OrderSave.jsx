@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { closeOrderSaveDialog, openProductsToOrderDialog } from '../../actions/dialogs';
 import { createOrderRequest, updateOrderRequest, fetchOrders, unselectOrderToEdit } from '../../actions/orders';
-import { selectOrderToAddProducts } from '../../actions/products';
+import { selectOrder } from '../../actions/orders';
 import OrderSavePresentational from './OrderSavePresentational';
 
 const mapStateToProps = ({orders}) => ({
@@ -13,7 +13,7 @@ const mapDispatchToProps = dispatch => ({
 		.then(newOrder => {
 			dispatch(fetchOrders());
 			dispatch(closeOrderSaveDialog());
-			dispatch(selectOrderToAddProducts(newOrder));
+			dispatch(selectOrder(newOrder));
 			dispatch(openProductsToOrderDialog());
 		}),
 	updateOrder: order => dispatch(updateOrderRequest(order))

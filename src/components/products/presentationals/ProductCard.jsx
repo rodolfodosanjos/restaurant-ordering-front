@@ -19,7 +19,7 @@ const styles = {
 	},
 };
 
-const ProductCard = ({classes, product, orderToAddProducts, orderProduct}) => (
+const ProductCard = ({classes, product, selectedOrder, orderProduct}) => (
 	<Card className={classes.card}>
 		<CardMedia
 			className={classes.media}
@@ -37,12 +37,12 @@ const ProductCard = ({classes, product, orderToAddProducts, orderProduct}) => (
 			<Typography gutterBottom variant="headline">
 				<small>R$</small> {product.price.toFixed(2)}
 			</Typography>
-			{(orderToAddProducts && orderProduct) ?
+			{(selectedOrder && orderProduct) ?
 				<Button
 					variant="outlined"
 					color="secondary"
-					onClick={orderProduct.bind(undefined, orderToAddProducts, product)}>
-					Add no Pedido
+					onClick={orderProduct.bind(undefined, selectedOrder, product)}>
+					Pedir
 				</Button>
 			: null}
 		</CardContent>

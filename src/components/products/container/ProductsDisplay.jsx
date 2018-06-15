@@ -3,10 +3,10 @@ import { fetchProducts } from '../../../actions/products';
 import { orderProductRequest, removeProductFromOrderRequest, fetchOrders } from '../../../actions/orders';
 import ProductsDisplayPresentational from '../presentationals/ProductsDisplay';
 
-const mapStateToProps = ({products}) => ({
+const mapStateToProps = ({products, orders}) => ({
 	products: products.data,
 	isLoading: products.isLoading,
-	orderToAddProducts: products.orderToAddProducts,
+	selectedOrder: orders.selectedOrder,
 	showProductsAsCards: true
 });
 
@@ -14,9 +14,8 @@ const mapDispatchToProps = dispatch => {
 	dispatch(fetchProducts());
 
 	return {
-		orderProduct: (orderToAddProducts, product) =>
-			dispatch(orderProductRequest(orderToAddProducts, product))
-				.then(() => dispatch(fetchOrders())),
+		orderProduct: (selectedOrder, product) =>
+			dispatch(orderProductRequest(selectedOrder, product)),
 		removeProductFromOrder: (orderToRemoveProducts, product) => 
 			dispatch(removeProductFromOrderRequest(orderToRemoveProducts, product))
 				.then(() => dispatch(fetchOrders())),

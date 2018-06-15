@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
-import { fetchOrders, deleteOrderRequest,
+import { fetchOrders, deleteOrderRequest, selectOrder,
 		selectOrderToEdit, removeProductFromOrderRequest } from '../../../actions/orders';
-import { selectOrderToAddProducts } from '../../../actions/products';
 import { openOrderSaveDialog, openProductsToOrderDialog } from '../../../actions/dialogs';
 import OrdersListPresentation from '../presentationals/OrdersList.jsx';
 
@@ -21,7 +20,7 @@ const mapDispatchToProps = dispatch => {
 			dispatch(openOrderSaveDialog());
 		},
 		orderProducts: order => {
-			dispatch(selectOrderToAddProducts(order));
+			dispatch(selectOrder(order));
 			dispatch(openProductsToOrderDialog());
 		},
 		removeProductFromOrder: (orderToRemoveProducts, product) => 

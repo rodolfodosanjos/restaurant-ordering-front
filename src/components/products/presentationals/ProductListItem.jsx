@@ -17,8 +17,8 @@ const styles = {
 	},
 };
 
-const ProductListItem = ({classes, product, orderToAddProducts,
-		orderProduct, removeProductFromOrder, orderToRemoveProducts}) => (
+const ProductListItem = ({classes, product,
+		orderProduct, removeProductFromOrder, selectedOrder}) => (
 	<ListItem>
 		<Avatar alt={product.name} src={product.imageSrc} />
 		<ListItemText
@@ -39,11 +39,11 @@ const ProductListItem = ({classes, product, orderToAddProducts,
 				<Chip label={product.category} />
 			</Grid>
 		</Grid>
-		{(orderToRemoveProducts && removeProductFromOrder) ?
+		{(selectedOrder && removeProductFromOrder) ?
 			<Tooltip title="Remover produto">
 				<IconButton
 					color="secondary"
-					onClick={removeProductFromOrder.bind(undefined, orderToRemoveProducts, product)}
+					onClick={removeProductFromOrder.bind(undefined, selectedOrder, product)}
 					aria-label="Remover produto">
 					<RemoveCircleOutlineIcon />
 				</IconButton>

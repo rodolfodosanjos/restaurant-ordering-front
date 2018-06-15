@@ -3,20 +3,27 @@ import PropTypes from 'prop-types';
 import List from '@material-ui/core/List';
 import ProductListItem from './ProductListItem.jsx';
 import ListContainerMaxSize from '../../commons/ListContainerMaxSize.jsx';
+import EmptyListMessage from '../../commons/EmptyListMessage.jsx';
 
-const ProductsList = ({products, orderToAddProducts, orderProduct,
-		removeProductFromOrder, orderToRemoveProducts}) => (
+const ProductsList = ({products, selectedOrder, orderProduct,
+		removeProductFromOrder, emptyListTitle,
+		emptyListText}) => (
 	<ListContainerMaxSize>
 		<List>
-			{products.map(product => (
-				<div key={product._id}>
-					<ProductListItem
-						product={product}
-						orderToAddProducts={orderToAddProducts}
-						orderToRemoveProducts={orderToRemoveProducts}
-						removeProductFromOrder={removeProductFromOrder} />
+			<EmptyListMessage
+				list={products}
+				emptyListTitle={emptyListTitle}
+				emptyListText={emptyListText}>
+				<div>
+					{products.map(product => (
+						<ProductListItem
+							key={product._id}
+							product={product}
+							selectedOrder={selectedOrder}
+							removeProductFromOrder={removeProductFromOrder} />
+					))}
 				</div>
-			))}
+			</EmptyListMessage>
 		</List>
 	</ListContainerMaxSize>
 );

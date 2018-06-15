@@ -12,6 +12,8 @@ export const REMOVE_PRODUCT_FROM_ORDER_REQUEST = 'REMOVE_PRODUCT_FROM_ORDER_REQU
 export const REMOVE_PRODUCT_FROM_ORDER_RECEIVE = 'REMOVE_PRODUCT_FROM_ORDER_RECEIVE';
 export const SELECT_ORDER_TO_EDIT = 'SELECT_ORDER_TO_EDIT';
 export const UNSELECT_ORDER_TO_EDIT = 'UNSELECTEDIT';
+export const SELECT_ORDER = 'SELECT_ORDER';
+export const UNSELECT_ORDER = 'UNSELECT_ORDER';
 
 const PATH = 'http://localhost:5000/orders';
 const corsHeaders = {
@@ -60,8 +62,9 @@ export const orderProduct = () => ({
 	type: ORDER_PRODUCT_REQUEST
 });
 
-export const orderProductReceive = () => ({
+export const orderProductReceive = (order) => ({
 	type: ORDER_PRODUCT_RECEIVE,
+	order,
 	receivedAt: Date.now()
 });
 
@@ -69,8 +72,9 @@ export const removeProductFromOrder = () => ({
 	type: REMOVE_PRODUCT_FROM_ORDER_REQUEST
 });
 
-export const removeProductFromOrderReceive = () => ({
+export const removeProductFromOrderReceive = (order) => ({
 	type: REMOVE_PRODUCT_FROM_ORDER_RECEIVE,
+	order,
 	receivedAt: Date.now()
 });
 
@@ -81,6 +85,15 @@ export const selectOrderToEdit = (orderToEdit) => ({
 
 export const unselectOrderToEdit = () => ({
 	type: UNSELECT_ORDER_TO_EDIT
+});
+
+export const selectOrder = (selectedOrder) => ({
+	type: SELECT_ORDER,
+	selectedOrder
+});
+
+export const unselectOrder = () => ({
+	type: UNSELECT_ORDER
 });
 
 export const fetchOrders = () => (
@@ -159,7 +172,10 @@ export const orderProductRequest = (orderToAddProducts, product) => (
 				mode: 'cors',
 				headers: corsHeaders
 			}).then(
-				response => dispatch(orderProductReceive()),
+				async response => {
+					const orderUpdated = await response.json();
+					dispatch(orderProductReceive(orderUpdated))}
+				,
 				error => console.log('An error occurred.', error)
 			);
 	}
@@ -174,7 +190,10 @@ export const removeProductFromOrderRequest = (orderToRemoveProducts, product) =>
 				mode: 'cors',
 				headers: corsHeaders
 			}).then(
-				response => dispatch(removeProductFromOrderReceive()),
+				async response => {
+					const orderUpdated = await response.json();
+					dispatch(removeProductFromOrderReceive(orderUpdated))}
+				,
 				error => console.log('An error occurred.', error)
 			);
 	}

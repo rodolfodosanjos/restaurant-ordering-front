@@ -4,18 +4,25 @@ import ProductsCardGrid from '../presentationals/ProductsCardGrid.jsx';
 import ProductsList from '../presentationals/ProductsList.jsx';
 import CenteredLoading from '../../commons/CenteredLoading.jsx';
 
+const emptyListTitle = 'Nenhum produto cadastrado'
+const emptyListText = 'Converse com o responsável pelo sistema para ele criar um catálogo'
+
 const ProductsDisplay = ({products, showProductsAsCards, isLoading,
-		orderToAddProducts, orderProduct, removeProductFromOrder}) => (
+		selectedOrder, orderProduct, removeProductFromOrder}) => (
 	<CenteredLoading isLoading={isLoading}>
 		{showProductsAsCards ?
 			<ProductsCardGrid
-				orderToAddProducts={orderToAddProducts}
+				emptyListTitle={emptyListTitle}
+				emptyListText={emptyListText}
+				selectedOrder={selectedOrder}
 				products={products}
 				removeProductFromOrder={removeProductFromOrder}
 				orderProduct={orderProduct} />
 			:
 			<ProductsList
-				orderToAddProducts={orderToAddProducts}
+				emptyListTitle={emptyListTitle}
+				emptyListText={emptyListText}
+				selectedOrder={selectedOrder}
 				products={products}
 				removeProductFromOrder={removeProductFromOrder}
 				orderProduct={orderProduct} />
