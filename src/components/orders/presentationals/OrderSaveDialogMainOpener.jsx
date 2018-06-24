@@ -4,13 +4,11 @@ import AddIcon from '@material-ui/icons/Add';
 import PageMainButton from '../../commons/PageMainButton.jsx';
 
 const OrderSaveDialogMainOpener = ({handleClickOpen}) => (
-	<div>
-		<PageMainButton
-			title="Criar pedido"
-			onClick={handleClickOpen}>
-			<AddIcon />
-		</PageMainButton>
-	</div>
+	<PageMainButton
+		title="Criar pedido"
+		onClick={handleClickOpen}>
+		<AddIcon />
+	</PageMainButton>
 );
 
 OrderSaveDialogMainOpener.propTypes = {

@@ -4,22 +4,29 @@ import List from '@material-ui/core/List';
 import OrderListItem from './OrderListItem.jsx';
 import ListContainerMaxSize from '../../commons/ListContainerMaxSize.jsx';
 import CenteredLoading from '../../commons/CenteredLoading.jsx';
+import EmptyListMessage from '../../commons/EmptyListMessage.jsx';
 
-const OrdersList = ({orders, isLoading, removeOrder, editOrder, orderProducts, removeProductFromOrder}) => (
+const OrdersList = ({orders, isLoading, removeOrder, editOrder, orderProducts,
+	removeProductFromOrder, emptyListTitle, emptyListText}) => (
 	<ListContainerMaxSize>
 		<CenteredLoading isLoading={isLoading}>
-			<List>
-				{orders.map(order => (
-					<div key={order._id}>
-						<OrderListItem
-							removeProductFromOrder={removeProductFromOrder}
-							orderProducts={orderProducts}
-							removeOrder={removeOrder}
-							editOrder={editOrder}
-							order={order} />
-					</div>
-				))}
-			</List>
+			<EmptyListMessage
+				list={orders}
+				emptyListTitle={emptyListTitle}
+				emptyListText={emptyListText}>{() =>
+				<List>
+					{orders.map(order => (
+						<div key={order._id}>
+							<OrderListItem
+								removeProductFromOrder={removeProductFromOrder}
+								orderProducts={orderProducts}
+								removeOrder={removeOrder}
+								editOrder={editOrder}
+								order={order} />
+						</div>
+					))}
+				</List>
+			}</EmptyListMessage>
 		</CenteredLoading>
 	</ListContainerMaxSize>
 );

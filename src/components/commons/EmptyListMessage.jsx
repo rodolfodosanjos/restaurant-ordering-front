@@ -4,6 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import ListIcon from '@material-ui/icons/List';
 import blue from '@material-ui/core/colors/blue';
+import CenteredItem from './CenteredItem.jsx';
 
 const styles = {
 	container: {
@@ -23,7 +24,7 @@ const styles = {
 
 const EmptyListMessage = ({classes, list,
 	emptyListTitle, emptyListText, children}) => (
-	<div> 
+	<CenteredItem>
 		{(list && list.length > 0) ?
 			children
 			:
@@ -40,7 +41,7 @@ const EmptyListMessage = ({classes, list,
 				</Typography>
 			</div>
 		}
-	</div>
+	</CenteredItem>
 );
 
 EmptyListMessage.propTypes = {

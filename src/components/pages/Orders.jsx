@@ -6,12 +6,17 @@ import OrdersList from '../orders/container/OrdersList.jsx';
 import PageTitle from '../commons/PageTitle.jsx';
 import Page from '../commons/Page.jsx';
 
+const emptyListTitle = 'Nenhum pedido cadastrado';
+const emptyListText = 'Clique no botão azul abaixo para pedir';
+
 const Orders = () => (
 	<Page>
 		<PageTitle>
 			Pedidos
 		</PageTitle>
-		<OrdersList />
+		<OrdersList 
+			emptyListTitle={emptyListTitle}
+			emptyListText={emptyListText}/>
 		<OrderSaveDialogMainOpener />
 		<OrderSaveDialog />
 		<OrderProductsDialog />
