@@ -15,7 +15,7 @@ export const UNSELECT_ORDER_TO_EDIT = 'UNSELECTEDIT';
 export const SELECT_ORDER = 'SELECT_ORDER';
 export const UNSELECT_ORDER = 'UNSELECT_ORDER';
 
-const PATH = 'http://localhost:5000/orders';
+const PATH = 'http://192.168.1.35:5000/orders';
 const corsHeaders = {
 	'Accept': 'application/json',
 	'Content-Type': 'application/json'

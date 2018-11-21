@@ -1,7 +1,7 @@
 export const PRODUCTS_REQUEST = 'PRODUCTS_REQUEST';
 export const PRODUCTS_RECEIVE = 'PRODUCTS_RECEIVE';
 
-const PATH = 'http://localhost:5000/products';
+const PATH = 'http://192.168.1.35:5000/products';
 
 export const requestProducts = () => ({
 	type: PRODUCTS_REQUEST
