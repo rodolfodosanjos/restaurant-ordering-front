@@ -13,7 +13,7 @@ const OrdersList = ({orders, isLoading, removeOrder, editOrder, orderProducts,
 			<EmptyListMessage
 				list={orders}
 				emptyListTitle={emptyListTitle}
-				emptyListText={emptyListText}>{() =>
+				emptyListText={emptyListText}>
 				<List>
 					{orders.map(order => (
 						<div key={order._id}>
@@ -26,7 +26,7 @@ const OrdersList = ({orders, isLoading, removeOrder, editOrder, orderProducts,
 						</div>
 					))}
 				</List>
-			}</EmptyListMessage>
+			</EmptyListMessage>
 		</CenteredLoading>
 	</ListContainerMaxSize>
 );
